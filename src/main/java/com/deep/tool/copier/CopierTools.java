@@ -42,36 +42,32 @@ public class CopierTools {
      * <h2>获得一个BeanCopier</h2>
      * 优先从缓存中获取，如果缓存中不存在则创建
      *
-     * @param c1           类1，源类型
-     * @param c2           类2，目标类型
+     * @param r            类1，源类型
+     * @param t            类2，目标类型
      * @param useConverter 是否使用转换器
      * @return net.sf.cglib.beans.BeanCopier
      * @author liuwenhao
      * @date 2022/4/18 9:09
      */
     public static BeanCopier create(Class<?> r, Class<?> t, boolean useConverter) {
-        Object key = generateKey.create(r, t);
-        boolean containsKey = map.containsKey(key);
-        if (containsKey) {
-            return map.get(key);
-        }
-        BeanCopier beanCopier = BeanCopier.create(r, t, useConverter);
-        map.put(key, beanCopier);
-        return beanCopier;
+        Object key = generateKey.create(r, t, useConverter);
+        return map.computeIfAbsent(key, o -> BeanCopier.create(r, t, useConverter));
     }
-
 
     interface GenerateKey {
         /**
          * <h2>生成key</h2>
          *
-         * @param c1 类1
-         * @param c2 类2
+         * @param c1           类1
+         * @param c2           类2
+         * @param useConverter 是否使用转换器
          * @return java.lang.Object
          * @author liuwenhao
          * @date 2022/4/18 8:58
          */
-        Object create(Class<?> c1, Class<?> c2);
+        Object create(Class<?> c1, Class<?> c2, boolean useConverter);
     }
 
 }
+
+

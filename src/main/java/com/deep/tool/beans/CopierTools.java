@@ -1,6 +1,8 @@
-package com.deep.tool.copier;
+package com.deep.tool.beans;
 
+import com.deep.tool.annotations.DerivedTypes;
 import net.sf.cglib.beans.BeanCopier;
+import net.sf.cglib.core.Converter;
 import net.sf.cglib.core.KeyFactory;
 
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author Create by liuwenhao on 2022/4/18 4:58
  */
+@DerivedTypes
 public class CopierTools {
 
     /**
@@ -52,6 +55,65 @@ public class CopierTools {
     public static BeanCopier create(Class<?> r, Class<?> t, boolean useConverter) {
         Object key = generateKey.create(r, t, useConverter);
         return map.computeIfAbsent(key, o -> BeanCopier.create(r, t, useConverter));
+    }
+
+    /**
+     * <h2>属性copy</h2>
+     * 将r(源)中的值覆盖的装入到t(目标)中<br>
+     * 不使用转换器
+     *
+     * @param r 源对象
+     * @param t 目标对象
+     * @author Created by liuwenhao on 2022/5/21 17:47
+     */
+    public static void copy(Object r, Object t) {
+        BeanCopier beanCopier = create(r.getClass(), t.getClass());
+        beanCopier.copy(r, t, null);
+    }
+
+    /**
+     * <h2>属性copy</h2>
+     * 将r(源)中的值覆盖的装入到t(目标)中<br>
+     * 使用转换器
+     *
+     * @param r 源对象
+     * @param t 目标对象
+     * @author Created by liuwenhao on 2022/5/21 17:47
+     */
+    public static void copy(Object r, Object t, Converter converter) {
+        BeanCopier beanCopier = create(r.getClass(), t.getClass(), true);
+        beanCopier.copy(r, t, converter);
+    }
+
+    /**
+     * <h2>属性copy</h2>
+     * 将r(源)中的值覆盖的装入到t(目标)中<br>
+     *
+     * @param <T>    目标类型
+     * @param r      源对象
+     * @param tClazz 目标类实例
+     * @return T
+     * @author Created by liuwenhao on 2022/5/21 18:04
+     */
+    public static <T> T newInstanceCopy(Object r, Class<T> tClazz) {
+        return null;
+    }
+
+    /**
+     * <h2>属性copy</h2>
+     * 将r(源)中的值覆盖的装入到t(目标)中<br>
+     * 通过泛型来确定源和目标的具体类型
+     *
+     * @param <R> 源对象类型
+     * @param <T> 目标对象类型
+     * @param r   源对象
+     * @param t   目标对象
+     * @return T
+     * @author Created by liuwenhao on 2022/5/21 17:53
+     */
+    public static <R, T> T copyAcquire(R r, T t) {
+        copy(r, t);
+        return t;
     }
 
     interface GenerateKey {

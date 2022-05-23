@@ -22,8 +22,13 @@
 <!--        <dependency>-->
 <!--            <groupId>io.github.pizihao</groupId>-->
 <!--            <artifactId>crow</artifactId>-->
-<!--            <version>0.0.2-SNAPSHOT</version>-->
+<!--            <version>0.0.3-SNAPSHOT</version>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
     </dependencies>
 
     <properties>

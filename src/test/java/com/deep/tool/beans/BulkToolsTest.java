@@ -1,6 +1,7 @@
 package com.deep.tool.beans;
 
 import com.deep.tool.model.Student;
+import com.deep.tool.model.User;
 import junit.framework.TestCase;
 import net.sf.cglib.beans.BulkBean;
 
@@ -27,6 +28,9 @@ public class BulkToolsTest extends TestCase {
         Object[] setObject = new Object[]{"pizihao", 456};
         bulkBean.setPropertyValues(student, setObject);
         System.out.println(Arrays.toString(setObject));
+
+        Object user = new User(123,"jkl",10);
+        System.out.println(user.getClass());
 
     }
 

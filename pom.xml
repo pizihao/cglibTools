@@ -20,11 +20,6 @@
             <version>1.11.9</version>
         </dependency>
         <dependency>
-            <groupId>io.github.pizihao</groupId>
-            <artifactId>crow</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>

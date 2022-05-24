@@ -170,10 +170,9 @@ public class BulkTools {
     public static void map(Object source, Object target, boolean isIgnore, String... fieldName) {
         List<FieldSignature> sourceField = resolveType(source.getClass(), isIgnore, fieldName);
         List<FieldSignature> targetField = resolveType(target.getClass(), isIgnore, fieldName);
-        boolean equal = CollUtil.equal(
-            CollUtil.list(sourceField, FieldSignature::getFileType),
-            CollUtil.list(targetField, FieldSignature::getFileType)
-        );
+        List<Class<?>> sourceType = CollUtil.list(sourceField, FieldSignature::getFileType);
+        List<Class<?>> targetType = CollUtil.list(targetField, FieldSignature::getFileType);
+        boolean equal = sourceType.equals(targetType);
         if (!equal) {
             throw TypeMismatchException.exception(
                 "无法匹配类型 -- > {},{}",

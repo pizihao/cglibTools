@@ -19,7 +19,6 @@ public class BulkTools {
 
     static GenerateKey generateKey = (GenerateKey) KeyFactory.create(GenerateKey.class);
 
-
     interface GenerateKey {
         /**
          * <h2>生成key</h2>

@@ -127,7 +127,7 @@ public class CopierTools {
      * @date 2022/4/18 9:09
      */
     public static BeanCopier create(Class<?> r, Class<?> t, boolean useConverter) {
-        Object key = generateKey.create(r, t, useConverter);
+        Object key = generateKey.newInstance(r, t, useConverter);
         return map.computeIfAbsent(key, o -> BeanCopier.create(r, t, useConverter));
     }
 
@@ -343,7 +343,7 @@ public class CopierTools {
          * @author liuwenhao
          * @date 2022/4/18 8:58
          */
-        Object create(Class<?> c1, Class<?> c2, boolean useConverter);
+        Object newInstance(Class<?> c1, Class<?> c2, boolean useConverter);
     }
 
 }

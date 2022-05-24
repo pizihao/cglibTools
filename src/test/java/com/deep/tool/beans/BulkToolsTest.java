@@ -1,6 +1,7 @@
 package com.deep.tool.beans;
 
 import com.deep.tool.model.Student;
+import junit.framework.TestCase;
 import net.sf.cglib.beans.BulkBean;
 
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Arrays;
  *
  * @author Create by liuwenhao on 2022/5/23 13:25
  */
-public class BulkToolsTest {
+public class BulkToolsTest extends TestCase {
 
     public static void main(String[] args) {
 

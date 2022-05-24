@@ -78,6 +78,7 @@ import java.util.stream.Collectors;
  * @author Create by liuwenhao on 2022/5/23 11:46
  */
 @DerivedTypes
+@SuppressWarnings("unused")
 public class BulkTools {
 
     static Map<Object, BulkBean> map = new ConcurrentHashMap<>();

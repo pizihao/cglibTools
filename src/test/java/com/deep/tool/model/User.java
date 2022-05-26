@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
 
-    private Integer Number;
+    private Integer number;
 
     private String name;
 

@@ -89,7 +89,7 @@ import java.util.stream.Collectors;
 @DerivedTypes
 @SuppressWarnings("unused")
 public class CopierTools {
-
+    private CopierTools(){}
     /**
      * 缓存，使用ConcurrentHashMap来存放，保证线程安全
      */

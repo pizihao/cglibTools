@@ -80,6 +80,7 @@ import java.util.stream.Collectors;
 @DerivedTypes
 @SuppressWarnings("unused")
 public class BulkTools {
+    private BulkTools(){}
 
     static Map<Object, BulkBean> map = new ConcurrentHashMap<>();
 
